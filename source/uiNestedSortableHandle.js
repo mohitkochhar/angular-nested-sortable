@@ -41,7 +41,7 @@
               if (typeof target.attr('nodrag') != "undefined") {
                 return;
               }
-                  
+
               var moveObj = e;
               if (hasTouch) {
                 if (e.targetTouches !== undefined) {
@@ -117,7 +117,7 @@
 
               if (hasTouch) {
                 angular.element($window).bind('touchend', dragEndEvent); // Mobile
-                angular.element($window).bind('touchcancel', dragEndEvent); // Mobile                        
+                angular.element($window).bind('touchcancel', dragEndEvent); // Mobile
                 angular.element($window).bind('touchmove', dragMoveEvent); // Mobile
               } else {
                 angular.element($window).bind('mouseup', dragEndEvent);
@@ -147,7 +147,7 @@
                 });
 
                 $helper.positionMoved(e, pos, firstMoving);
-                
+
                 if (firstMoving) {
                   firstMoving = false;
                   return;
@@ -208,7 +208,7 @@
                 if (targetItem) {
                   targetItemData = targetItem.itemData();
                 }
-                  
+
                 currentAccept = targetItem.accept(scope);
 
                 // move vertical
@@ -280,7 +280,8 @@
                   else {
                     scope.callbacks.itemRemoved(scope.sortableElement.scope(), source, sourceIndex);
                     targetScope.callbacks.itemAdded(targetScope, source, destIndex);
-                    scope.callbacks.itemMoved(scope.sortableElement.scope(), source, sourceIndex, targetScope, destIndex);
+                    scope.callbacks.itemMoved(scope.sortableElement.scope(), source, sourceIndex, targetScope, destIndex, 'source');
+                    targetScope.callbacks.itemMoved(scope.sortableElement.scope(), source, sourceIndex, targetScope, destIndex, 'target');
                   }
                 }
               }
